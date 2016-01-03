@@ -11,7 +11,7 @@ public class Clipboards {
     Transferable transferable = new StringSelection(value);
     clipboard.setContents(transferable, null);
 
-    System.out.println("copied to clipboard, exiting in 10 seconds");
+    System.out.println("copied password to clipboard, exiting in 10 seconds");
     try {
       for (int i = 0; i < 10; i++) {
         System.out.print(".");
