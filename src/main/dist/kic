@@ -2,7 +2,11 @@
 
 BASEDIR=$(dirname $0)
 CLASSPATH=$(cygpath -aw "$BASEDIR")
-echo "enter your keepass database password:"
-read -s KEEPASS_PASSWORD
-export KEEPASS_PASSWORD
+
+if [ "$1" != "db" ]; then
+  echo "enter your keepass database password:"
+  read -s KEEPASS_PASSWORD
+  export KEEPASS_PASSWORD
+fi
+
 java -cp "$CLASSPATH/*" com.daveroberge.kic.Kic $@

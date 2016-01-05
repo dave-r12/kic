@@ -9,7 +9,8 @@ public class Kic {
     Cli.CliBuilder<Runnable> builder = Cli.<Runnable>builder("kic")
         .withDescription("keepass in the cloud")
         .withDefaultCommand(Help.class)
-        .withCommands(InitCommand.class, AddCommand.class, ListCommand.class, CopyCommand.class);
+        .withCommands(InitCommand.class, AddCommand.class, ListCommand.class, CopyCommand.class,
+            DatabaseCommand.class);
 
     Cli<Runnable> cli = builder.build();
     cli.parse(args).run();
