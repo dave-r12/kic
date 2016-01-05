@@ -4,6 +4,7 @@ import io.airlift.airline.Command;
 import io.airlift.airline.Option;
 
 import static com.daveroberge.kic.Clipboards.copyAndNotify;
+import static com.daveroberge.kic.Preconditions.kicFilePresentOrExit;
 
 @Command(name = "add", description = "create new entry in the keepass database")
 public class AddCommand extends EntryCommand {
@@ -19,8 +20,9 @@ public class AddCommand extends EntryCommand {
 
   @Override public void run() {
     String password = passwordReader.readPassword();
+    KicFile kicFile = Preconditions.kicFilePresentOrExit();
 
-    keePass.open(databaseName, password);
+    keePass.open(kicFile, password);
 
     int length = (passwordLength == null ? PasswordGenerator.DEFAULT_LENGTH : passwordLength);
     PasswordGenerator passwordGenerator = new PasswordGenerator();

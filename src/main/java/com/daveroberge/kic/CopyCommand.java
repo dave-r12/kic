@@ -11,7 +11,9 @@ public class CopyCommand extends EntryCommand {
 
   @Override public void run() {
     String password = passwordReader.readPassword();
-    keePass.open(databaseName, password);
+    KicFile kicFile = Preconditions.kicFilePresentOrExit();
+
+    keePass.open(kicFile, password);
 
     try {
       String entryPassword = keePass.getPasswordForEntry(title);
